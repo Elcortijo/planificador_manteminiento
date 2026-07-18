@@ -999,6 +999,29 @@
     }
 
     console.log('Planificador Taller V3.0 - Modo API');
+
+    // ================================================================
+// PANTALLA COMPLETA (FULLSCREEN)
+// ================================================================
+function activarPantallaCompleta() {
+  const doc = document.documentElement;
+  if (doc.requestFullscreen) {
+    doc.requestFullscreen().catch(err => {
+      // Silencio: el navegador puede bloquear la solicitud si no hay interacción del usuario
+    });
+  } else if (doc.webkitRequestFullscreen) { // Safari
+    doc.webkitRequestFullscreen();
+  } else if (doc.msRequestFullscreen) { // IE/Edge
+    doc.msRequestFullscreen();
+  }
+}
+
+// Intentar activar pantalla completa al hacer clic en cualquier parte de la página
+document.addEventListener('click', function firstClick() {
+  activarPantallaCompleta();
+  document.removeEventListener('click', firstClick);
+}, { once: true });
+
   </script>
 </body>
 </html>
