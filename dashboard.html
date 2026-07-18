@@ -1,1 +1,47 @@
 
+<div id="page-dashboard" class="page-section">
+  <!-- Filtros de fecha -->
+  <div class="card-pro">
+    <div class="row g-2 align-items-end">
+      <div class="col-5">
+        <label class="form-label fw-bold small">Fecha Inicio</label>
+        <input type="date" id="dash-fecha-inicio" class="form-control">
+      </div>
+      <div class="col-5">
+        <label class="form-label fw-bold small">Fecha Fin</label>
+        <input type="date" id="dash-fecha-fin" class="form-control">
+      </div>
+      <div class="col-2">
+        <button class="btn btn-red w-100" onclick="cargarDashboard()"><i class="bi bi-arrow-clockwise"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Métricas básicas -->
+  <div class="row g-2 g-md-3 mb-3">
+    <div class="col-6 col-md-3"><div class="metric-card bg-soft-red"><div class="icon text-red"><i class="bi bi-truck"></i></div><div class="number text-red" id="d-total">0</div><div class="label">Total Unidades</div></div></div>
+    <div class="col-6 col-md-3"><div class="metric-card bg-soft-yellow"><div class="icon text-yellow"><i class="bi bi-tools"></i></div><div class="number text-yellow" id="d-taller">0</div><div class="label">En Taller</div></div></div>
+    <div class="col-6 col-md-3"><div class="metric-card bg-soft-green"><div class="icon text-green"><i class="bi bi-check-circle"></i></div><div class="number text-green" id="d-disponibles">0</div><div class="label">Disponibles</div></div></div>
+    <div class="col-6 col-md-3"><div class="metric-card bg-soft-blue"><div class="icon text-blue"><i class="bi bi-calendar-check"></i></div><div class="number text-blue" id="d-preventivo">0</div><div class="label">Preventivos</div></div></div>
+  </div>
+
+  <!-- Métricas avanzadas (MTBF, MTTR, Disponibilidad) -->
+  <div class="row g-2 g-md-3 mb-3">
+    <div class="col-4"><div class="metric-card"><div class="icon text-primary"><i class="bi bi-clock-history"></i></div><div class="number text-primary" id="d-mtbf">0</div><div class="label">MTBF (horas)</div></div></div>
+    <div class="col-4"><div class="metric-card"><div class="icon text-warning"><i class="bi bi-wrench"></i></div><div class="number text-warning" id="d-mttr">0</div><div class="label">MTTR (horas)</div></div></div>
+    <div class="col-4"><div class="metric-card"><div class="icon text-success"><i class="bi bi-percent"></i></div><div class="number text-success" id="d-disponibilidad">0%</div><div class="label">Disponibilidad</div></div></div>
+  </div>
+
+  <!-- Gráficos -->
+  <div class="row g-2 g-md-3">
+    <div class="col-12 col-md-4"><div class="card-pro"><h6 class="fw-bold mb-2 text-center">Estado de Unidades</h6><div class="chart-container"><canvas id="chartEstadoUnidades"></canvas></div></div></div>
+    <div class="col-12 col-md-4"><div class="card-pro"><h6 class="fw-bold mb-2 text-center">Solicitudes por Urgencia</h6><div class="chart-container"><canvas id="chartUrgencia"></canvas></div></div></div>
+    <div class="col-12 col-md-4"><div class="card-pro"><h6 class="fw-bold mb-2 text-center">Órdenes por Estado</h6><div class="chart-container"><canvas id="chartOrdenes"></canvas></div></div></div>
+  </div>
+
+  <!-- Tickets activos -->
+  <div class="card-pro mt-3">
+    <h5 class="fw-bold mb-3"><i class="bi bi-exclamation-triangle me-2 text-danger"></i>Solicitudes Activas</h5>
+    <div id="lista-tickets-dash"></div>
+  </div>
+</div>
